@@ -1,0 +1,17 @@
+{
+  "name": "nodebb-plugin-codenavigator",
+  "version": "0.0.1",
+  "description": "A NodeBB plugin allows users to clone with CodeNavigator on iOS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "codenavigator"
+  ],
+  "author": "guangzhen (guangzhen@hotmail.com)",
+  "license": "MIT",
+  "repository": "https://github.com/kurli/nodebb-plugin-codenavigator"
+}

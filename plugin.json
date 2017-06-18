@@ -1,0 +1,14 @@
+{
+    "id": "nodebb-plugin-codenavigator",
+    "name": "NodeBB Plugin CodeNavigator",
+    "description": "NodeBB plugin allows users to clone git repo via CodeNavigator on iOS",
+    "url": "https://github.com/kurli/nodebb-plugin-codenavigator",
+    "library": "./index.js",
+    "hooks": [
+        { "hook": "filter:post.parse", "method": "parse", "callbacked": true, "priority": 6 }
+
+    ],
+    	"staticDirs": {
+        "css": "./static"
+    }
+}
