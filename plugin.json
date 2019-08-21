@@ -5,10 +5,16 @@
     "url": "https://github.com/kurli/nodebb-plugin-codenavigator",
     "library": "./index.js",
     "hooks": [
-        { "hook": "filter:post.parse", "method": "parse", "callbacked": true, "priority": 6 }
-
+        { "hook": "filter:parse.post", "method": "parse", "priority": 4 },
+        { "hook": "filter:parse.post", "method": "parse", "priority": 6 }
     ],
-    	"staticDirs": {
-        "css": "./static"
-    }
+    "staticDirs": {
+        "styles": "./static"
+    },
+    "less": [
+        "./static/styles/style.less"
+    ],
+    "scripts": [
+        "static/lib/main.js"
+    ]
 }

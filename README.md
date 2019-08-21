@@ -1,10 +1,10 @@
-# NodeBB Plugin Youku
+# NodeBB Plugin CodeNavigator
 
-This NodeBB plugin allows users to embed Youku videos inline in their posts
+This NodeBB plugin allows users to embed CodeNavigator mark in their posts
 
 ## Installation
 
-    npm install nodebb-plugin-youku
+    npm install nodebb-plugin-codenavigator
 
 
 

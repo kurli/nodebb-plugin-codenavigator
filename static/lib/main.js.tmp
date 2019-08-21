@@ -1,0 +1,51 @@
+"use strict";
+
+var CodeNavigator = {};
+
+$(document).ready(function(){
+    var topicContainer = $('.topic');
+    topicContainer.on('click', '[component="topic/git-clone"]', function (e) {
+        var userAgent = navigator.userAgent;
+        // If CodeNavigator webview
+        if (userAgent.indexOf('CodeNavigator') > 0) {
+            location.href = e.target.name;
+        } else if (userAgent.indexOf('iPhone') != -1 || userAgent.indexOf('iPad') != -1) {
+            bootbox.confirm("Open With CodeNavigator?", function(confirm){
+                if (confirm === true) {
+                    var timeout, t = 1000, hasApp = true;
+                    setTimeout(function () {
+                       if (hasApp) {
+                           console.log('安装了app');
+                       } else {
+                           if (userAgent.indexOf('iPhone') != -1) {
+                               //location.href = 'http://itunes.apple.com/cn/app/codenavigator-for-iphone/id536268810?mt=8';
+                                window.open( 'http://itunes.apple.com/cn/app/codenavigator/id492480832?mt=8', '_blank');
+                           } else {
+                               //location.href = 'http://itunes.apple.com/cn/app/codenavigator/id492480832?mt=8';
+                                window.open("http://itunes.apple.com/cn/app/codenavigator/id492480832?mt=8", '_blank');
+                           }
+                       }
+                    }, 2000);
+                    function testApp() {
+                        var t1 = Date.now();
+                        var ifr = $('<iframe id="ifr"></iframe>');
+                        ifr.attr('src', 'codenavigator://' + e.target.name);
+                        $('body').append(ifr);
+                        timeout = setTimeout(function () {
+                            try_to_open_app(t1);
+                        }, t);
+                    }
+                    function try_to_open_app(t1) {
+                        var t2 = Date.now();
+                        if (!t1 || t2 - t1 < t + 200) {
+                            hasApp = false;
+                        }
+                    }
+                    testApp();
+                }
+            });
+        }
+        return false;
+    });
+});
+

@@ -4,23 +4,23 @@
  * Link http://opengrok.club
  */
 
-
-(function(module) {
-    "use strict";
+    var winston = require('winston');
     var CodeNavigator = {},
-        embed = '<div class="video-container">' +
-            '<button class="btn">Hello</button>' +
-            '</div>';
+        embed = "<button class='btn git-btn' component='topic/git-clone' name='$1' style='margin: 5px'>$3</button>";
 
-    CodeNavigator.parse = function(postContent, callback) {
-        var	regularUrl = /<a href=['"]([^'"]*?.git)['"]>(.*?)<\/a>/;
-
+    CodeNavigator.parse = function(data, callback) {
+        if (!data || !data.postData || !data.postData.content) {
+            callback(null, data);
+            return;
+        }
+        var postContent = data.postData.content;
+        var	regularUrl = /<a href=['"]([^'"]*?.git\/*)['"](.*?)>(.*?)<\/a>/g;
         if (postContent.match(regularUrl)) {
             postContent = postContent.replace(regularUrl, embed);
+            data.postData.content = postContent;
         }
 
-        callback(null, postContent);
+        callback(null, data);
     };
 
     module.exports = CodeNavigator;
-}(module));

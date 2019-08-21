@@ -13,5 +13,8 @@
   ],
   "author": "guangzhen (guangzhen@hotmail.com)",
   "license": "MIT",
-  "repository": "https://github.com/kurli/nodebb-plugin-codenavigator"
+  "repository": "https://github.com/kurli/nodebb-plugin-codenavigator",
+  "nbbpm": {
+    "compatibility": "^1.0.0"
+  }
 }
